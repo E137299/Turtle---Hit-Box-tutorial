@@ -7,7 +7,6 @@ class Player(Turtle):
         super().__init__()
         self.shape("square")
         self.color("blue")
-        self.pencolor("orange")
         self.shapesize(2)
         self.direction = "right"
         
@@ -80,7 +79,6 @@ class Box(Turtle):
         self.speed(0)
         self.penup()
         self.color("red")
-        self.pencolor("blue")
         self.shape("square")
         self.shapesize(2)
         self.goto(random.randint(-200,200),random.randint(-200,200))
@@ -94,10 +92,11 @@ screen.bgcolor('black')
 screen.screensize(150,150)
 screen.listen()
 
+#Create Player
 player = Player()
 
+# Create four boxes and place them in a list
 boxes = []
-
 for count in range(4):
     boxes.append(Box())
 
@@ -105,7 +104,7 @@ while True:
     for box in boxes:
         if player.touch(box):
             box.color("white")
-            player.push(box)
+            # player.push(box)
         else:
             box.color("red")
 
