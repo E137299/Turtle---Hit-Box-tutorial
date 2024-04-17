@@ -12,10 +12,10 @@ class Player(Turtle):
         
         self.penup()
         self.screen = screen
-        self.screen.onkey(self.move_up, "Up")
-        self.screen.onkey(self.move_right, "Right")
-        self.screen.onkey(self.move_down, "Down")
-        self.screen.onkey(self.move_left, "Left")
+        self.screen.onkeypress(self.move_up, "Up")
+        self.screen.onkeypress(self.move_right, "Right")
+        self.screen.onkeypress(self.move_down, "Down")
+        self.screen.onkeypress(self.move_left, "Left")
 
     def move_up(self):
         self.direction = "up"
@@ -63,13 +63,13 @@ class Player(Turtle):
         
     def push(self,box):
         if self.direction == "up":
-            box.sety(self.ycor()+20)
+            box.sety(self.ycor()+40)
         if self.direction == "down":
-            box.sety(box.ycor()-5)
+            box.sety(self.ycor()-40)
         if self.direction == "right":
-            box.setx(box.xcor()+5)
+            box.setx(self.xcor()+40)
         if self.direction == "left":
-            box.setx(box.xcor()-5)
+            box.setx(self.xcor()-40)
 
 
 class Box(Turtle):
@@ -104,7 +104,7 @@ while True:
     for box in boxes:
         if player.touch(box):
             box.color("white")
-            # player.push(box)
+            player.push(box)
         else:
             box.color("red")
 
